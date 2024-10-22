@@ -81,11 +81,9 @@ To see env already installed:
 You can install prebuilt packages or collections of packages from [bioconda](https://bioconda.github.io) or [conda-forge](https://conda-forge.org). First go to the webpages of the repository and search for the name of the package you want and enter it below where ```<THENAMEOFTHEMODULE>```
 ```
 conda install <THENAMEOFTHEMODULE> -c bioconda -c conda-forge
-
-
-
 ```
-#make mrbayes conda env 
+
+# make mrbayes conda env 
 
 conda create --name mb python=3.8.8
 conda activate mb
