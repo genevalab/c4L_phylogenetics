@@ -4,7 +4,7 @@ C4L Phylogenetics tutorial
 # Running MrBayes on Amarel
 First we will need to make a new conda environment for you to install MrBayes. The below lines will walk you through making a new environment called ```mb```
 
-If you have never used anaconda on amarel you will first need to set it up. To test if you have previously set up conda in your environment type ```which conda``` if that does not return anything then follow the directions below, othwewise jump down to to the ["make mrbayes conda env"]() section below.
+If you have never used anaconda on amarel you will first need to set it up. To test if you have previously set up conda in your environment type ```which conda``` if that does not return anything then follow the directions below, othwewise jump down to to the ["make mrbayes conda env"](https://github.com/genevalab/c4L_phylogenetics/blob/main/README.md#make-mrbayes-conda-env) section below.
 
 
 # Using conda on Amarel
