@@ -1,6 +1,10 @@
 # c4L_phylogenetics
 C4L Phylogenetics tutorial
 
+# Running MrBayes on Amarel
+First we will need to make a new conda environment for you to install MrBayes. The below lines will walk you through making a new environment called ```mb```
+
+If you have never used anaconda on amarel you will first need to set it up. To test if you have previously set up conda in your environment type ```which conda``` if that does not return anything then follow the directions below, othwewise jump to the "make mrbayes conda env" section below.
 
 
 # Using conda on Amarel
@@ -77,4 +81,30 @@ To see env already installed:
 You can install prebuilt packages or collections of packages from [bioconda](https://bioconda.github.io) or [conda-forge](https://conda-forge.org). First go to the webpages of the repository and search for the name of the package you want and enter it below where ```<THENAMEOFTHEMODULE>```
 ```
 conda install <THENAMEOFTHEMODULE> -c bioconda -c conda-forge
+
+
+
+```
+#make mrbayes conda env 
+
+conda create --name mb python=3.8.8
+conda activate mb
+conda install mrbayes -c bioconda -c conda-forge
+#starting an interactive job kills your conda env anyway so shut it down
+conda deactivate
+```
+
+Once you have made your new conda environment, we will start an interactive job on Amarel to test it out
+
+```
+#test in an interactive session
+srun --nodes=1 --ntasks-per-node=4 -p cmain --time=01:00:00 --pty bash -i
+
+#load conda env
+conda activate mb
+
+#run mrbayes with 4 nodes
+mpirun -np 4 mb-mpi
+```
+
 ```
