@@ -84,7 +84,9 @@ conda install <THENAMEOFTHEMODULE> -c bioconda -c conda-forge
 ```
 
 # make mrbayes conda env 
+Once you have configured conda in your home directory you can proceed to creating an environment for MrBayes.
 
+```
 conda create --name mb python=3.8.8
 conda activate mb
 conda install mrbayes -c bioconda -c conda-forge
