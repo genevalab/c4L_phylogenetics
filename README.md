@@ -140,3 +140,22 @@ This should have loaded your data into MrBayes. No to run an analysis we only ne
 ```
 lset nst=6 rates=invgamma
 ```
+
+Next we will set the number of mcmc generations to run. For the purposes of today's lab I am setting this VERY low so that it finishes in a reasonable amount of time
+
+```
+mcmcp ngen=100000
+```
+
+For the purposes of this workshop we are going to set some manual seed values so everyone's run gives the same results. In a true analysis you would typically not set a seed in this way
+
+```
+set seed=12345 swapseed=12345
+```
+
+While there are myriad other parameters we might want to set, we will leave those at thier default settings for now. To begin an analysis simply run
+```
+mcmc
+```
+
+
