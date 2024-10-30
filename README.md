@@ -84,26 +84,36 @@ conda install <THENAMEOFTHEMODULE> -c bioconda -c conda-forge
 ```
 
 # make mrbayes conda env 
-Once you have configured conda in your home directory you can proceed to creating an environment for MrBayes.
+Once you have configured conda in your home directory you can proceed to creating an environment for MrBayes. While not required, we are going to first request an interactive session to speed up the time it takees to build your environment. You only need to build this environment once.
 
 ```
+#start your interactive session
+srun --nodes=1 --ntasks-per-node=1 -p cmain --time=01:00:00 --pty bash -i
+
+
 conda create --name mb python=3.8.8
 conda activate mb
 conda install mrbayes -c bioconda -c conda-forge
 #starting an interactive job kills your conda env anyway so shut it down
 conda deactivate
+
+#exit your interactive session
+
 ```
 
-Once you have made your new conda environment, we will start an interactive job on Amarel to test it out
+Everytime you plan to run MrBayes you should start an interactive job on Amarel. I know this is repetitive - we just opened and closed an interactive job above, but its imperative you not run MrBayes on the amarel head node, so I including starting an interactive session as part of the code block below.
 
 ```
-#test in an interactive session
+#start a new interactive session
 srun --nodes=1 --ntasks-per-node=1 -p cmain --time=01:00:00 --pty bash -i
 
 #load conda env
 conda activate mb
+
+# now test if MrBayes
+mb
 ```
-That should load the program and present a MrBayes prompt for now just type quit to exit MrBayes. 
+That should load the program and present a MrBayes prompt. If it doesn't, ask for help before proceeeding. If you are good, just type ```quit``` to exit MrBayes but stay in your interative Amarel session.
 
 # Running a Bayesian Analysis
 Now that we have MrBayes working we'll run a simple analysis using data provided inside our conda environment.
