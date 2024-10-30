@@ -121,3 +121,22 @@ cd C4L_phylo
 cp ~/.conda/envs/mb/share/examples/mrbayes/primates.nex .
 
 ```
+Take a look at your data file by running ```more primates.nex```
+
+As you can see, this nexus file contains flat text with some basic summary information (the number of taxa and the number of characters) followed by one line per sample with the name of the sample and a DNA sequence. These data are homologus gene regions that have been sequenced for each taxon and aligned so that comparisons among taxa will make use of homologous characters.
+
+With everything in place, we can now open MrBayes and load our data file to perform an analysis. First load MrBayes
+```
+mb
+```
+now we want to load our DNA alignment 
+
+```
+execute primates.nex
+```
+
+This should have loaded your data into MrBayes. No to run an analysis we only need to few more things. First we need assign a model of molecular evolution. Typically the optimal model of evoluion is determined by a preliminary analysis that using Information Theory to identify the best-fitting model for the the present dataset but for the purposes of today's workshop we are going to use the a parameter rich model "GTR + I + G". This model allows for separate rate distributions for each possible nucleotide substition, assumes some portion of sites in the alignemnt will in invariable, and models the distribution of rates for each substitution type as Gamma distributed.
+
+```
+lset nst=6 rates=invgamma
+```
