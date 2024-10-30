@@ -98,13 +98,26 @@ Once you have made your new conda environment, we will start an interactive job 
 
 ```
 #test in an interactive session
-srun --nodes=1 --ntasks-per-node=4 -p cmain --time=01:00:00 --pty bash -i
+srun --nodes=1 --ntasks-per-node=1 -p cmain --time=01:00:00 --pty bash -i
 
 #load conda env
 conda activate mb
-
-#run mrbayes with 4 nodes
-mpirun -np 4 mb-mpi
 ```
+That should load the program and present a MrBayes prompt for now just type quit to exit MrBayes. 
+
+# Running a Bayesian Analysis
+Now that we have MrBayes working we'll run a simple analysis using data provided inside our conda environment.
+
+First lets create a new directory to perform our analysis
+```
+# move to your home directory 
+cd ~
+
+# create and then move into new directory inside your home directory
+mkdir C4L_phylo
+cd C4L_phylo
+ 
+# lets copy the example data provided with MrBayes to this directory so we can later edit it
+cp ~/.conda/envs/mb/share/examples/mrbayes/primates.nex .
 
 ```
