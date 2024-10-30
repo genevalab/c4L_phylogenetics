@@ -158,4 +158,12 @@ While there are myriad other parameters we might want to set, we will leave thos
 mcmc
 ```
 
+The entire run should take about a minute at which time MrBayes will ask if you want to continue. Answer no and the run will complete and print some summaries of the mcmc analysis. Next meeting we will investigate in detail how to assess for convergence of your MCMC runs, discard as burn-in the MCMC generations prior to convergence, and finally how to summarize a final tree and visualize it using open source software.
+
+So as to not leave you hanging you can run this command to see a preliminary view of your tree.
+
+```
+sumt
+```
+
 
