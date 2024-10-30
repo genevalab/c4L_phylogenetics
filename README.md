@@ -67,7 +67,7 @@ Once created you will need to activate the enivornment to start using it:
 ```
 conda activate trial
 ```
-The command prompt should not start with ```(trial)```. If so you are now inside your environment and can start your work! When you are done and ready to leave an environment simply run this command to return to the (base) environment:
+The command prompt should now start with ```(trial)```. If so you are now inside your environment and can start your work! When you are done and ready to leave an environment simply run this command to return to the (base) environment:
 ```
 conda deactivate
 ```
