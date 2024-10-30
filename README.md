@@ -98,15 +98,18 @@ conda install mrbayes -c bioconda -c conda-forge
 # now test if MrBayes installation was sucessful
 mb
 ```
-That should load the program and present a MrBayes prompt. If it doesn't, ask for help before proceeeding. If you are good, exit MrBayes:
+That should load the program and present a MrBayes prompt. If it doesn't, ask for help before proceeeding. If you are good, exit MrBayes by running:
 
 ```
 quit
+```
 
-#close your conda environment
+Then close your conda environment
+```
 conda deactivate
-
-#and exit your interactive session
+```
+and exit your interactive session.
+```
 exit
 ```
 
