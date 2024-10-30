@@ -122,14 +122,10 @@ srun --nodes=1 --ntasks-per-node=1 -p cmain --time=01:00:00 --pty bash -i
 
 #load conda env
 conda activate mb
-
-
 ```
 
-# Running a Bayesian Analysis
-Now that we have MrBayes working we'll run a simple analysis using data provided inside our conda environment.
 
-First lets create a new directory to perform our analysis
+First, lets create a new directory to perform our analysis:
 ```
 # move to your home directory 
 cd ~
@@ -140,17 +136,17 @@ cd C4L_phylo
  
 # lets copy the example data provided with MrBayes to this directory so we can later edit it
 cp ~/.conda/envs/mb/share/examples/mrbayes/primates.nex .
-
 ```
+
 Take a look at your data file by running ```more primates.nex```
 
 As you can see, this nexus file contains flat text with some basic summary information (the number of taxa and the number of characters) followed by one line per sample with the name of the sample and a DNA sequence. These data are homologus gene regions that have been sequenced for each taxon and aligned so that comparisons among taxa will make use of homologous characters.
 
-With everything in place, we can now open MrBayes and load our data file to perform an analysis. First load MrBayes
+With everything in place, we can now open MrBayes and load our data file to perform an analysis. First load MrBayes:
 ```
 mb
 ```
-now we want to load our DNA alignment 
+now we want to load our DNA alignment:
 
 ```
 execute primates.nex
@@ -163,7 +159,6 @@ lset nst=6 rates=invgamma
 ```
 
 Next we will set the number of mcmc generations to run. For the purposes of today's lab I am setting this VERY low so that it finishes in a reasonable amount of time
-
 ```
 mcmcp ngen=100000
 ```
