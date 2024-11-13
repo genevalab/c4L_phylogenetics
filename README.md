@@ -253,11 +253,11 @@ primates.nex.run2.p
 primates.nex.run2.t
 ```
 
-These files contain the results of all logged generations of your MCMC run. To assess convergence, we need to examine the .p files. So using ssh or OnDemand, download these files to your local machine. Once everyone has reached this point we will proceed interactively.
+These files contain the results of all logged generations of your MCMC run. To assess convergence, we need to examine the .p files. So using SSH or [OnDemand](ondemand.hpc.rutgers.edu), download these files to your local machine. Once everyone has reached this point we will proceed interactively.
 
 ## Creating a post-burnin consensus tree
 
-Now that you have diagnosed convergence we have to do second, short run on MrBayes to summarize all of your post-burnin trees so taht we can create a single tree that represents the entire posterior distribution of trees.
+Now that you have diagnosed convergence we have to do second, very short, run on MrBayes to summarize all of your post-burnin trees so that we can create a single tree that represents the entire posterior distribution of trees.
 
 First we need to edit the MrBayes block at the bottom of your alignement file. We'll comment out the line that starts with MCMC and add a line to issue the summarize trees command. MrBayes recognizes text in square brackets ```[like this]``` as comments and doesn't parse them, so put brackets around the mcmc line (put the semicolon inside the brackets too).
 
