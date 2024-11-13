@@ -197,6 +197,7 @@ Phylogenetic analayses can take a while to run so most of the time we want to su
 
 ```
 BEGIN mrbayes;
+set seed=12345 swapseed=12345;
 lset  nst=6 rates=invgamma;
 mcmc ngen=100000;
 END;
@@ -205,9 +206,10 @@ END;
 
 If you wanted to now run this analysis, you would activate your conda environment and run MrBayes with the name of your alignment as an added argument (eg ```mb YOURNEXUSFILE.nex```). This will load the alignment, set the parameters we selected, and begin the MCMC. While this is great, we would still need to keep an interactive session open until the MCMC finished, so the second set is to write a batch script to submit your job to the SLURM scheduler. 
 
-The bulk of a submission script is pasted below. You can copy it and then create a new file on Amarel using your favorite text editor then edit to include the correct vaules for ```YOUREMAILADDRESS```, ```YOURMBCONDAENVIRONMENT```, ```YOURALIGNMENT.nex```.
+The bulk of a submission script is pasted below. You can copy it and then create a new file on Amarel called ```run_mrbayes.sh``` using your favorite text editor in the directory that contains your alignment. Next, edit to include the correct vaules for ```YOUREMAILADDRESS```, ```YOURMBCONDAENVIRONMENT```, ```YOURALIGNMENT.nex```. 
 
 ```
+#!/bin/bash
 #SBATCH --partition=p_ccib_1   			# which partition to run the job, options are in the Amarel guide
 #SBATCH --exclude=gpuc001,gpuc002,halc068,memc001,hal0287,hal0288	# exclude CCIB GPUs and large mem nodes
 # --constraint=oarc			# excludes owned nodes on main
@@ -233,3 +235,17 @@ echo "## run mrB through conda environment"
 mb YOURALIGNMENT.nex
 
 ```
+Once your submission script is saved all it take to submit a MrBayes jobs is to run:
+
+```
+sbatch run_mrbayes.nex
+```
+
+To check on the status of your job, you can run ```squeue -u YOURNETID```.
+
+## Diagnose convergence by examining MCMC trace files in Tracer
+
+The output of any MrBayes run should create the following files:
+
+
+
