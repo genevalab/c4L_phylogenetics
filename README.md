@@ -1,5 +1,5 @@
 # c4L_phylogenetics
-C4L Phylogenetics tutorial
+C4L Phylogenetics tutorial, for week 2 material click [here](https://github.com/genevalab/c4L_phylogenetics/blob/main/README.md#meeting-2).
 
 # Running MrBayes on Amarel
 First we will need to make a new conda environment for you to install MrBayes. The below lines will walk you through making a new environment called ```mb```
