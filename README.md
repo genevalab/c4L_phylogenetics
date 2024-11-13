@@ -192,7 +192,7 @@ Our learning goals for the second meeting are:
 * Create a consensus tree from the post-burnin posterior distribution trees
 * Generate phylogenetic tree figures using FigTree
 
-## Submit MrBayes jobs using sbatch
+## Submitting MrBayes jobs using sbatch
 Phylogenetic analayses can take a while to run so most of the time we want to submit them as batch jobs. To accomplish this we first need to set up our alignment file to run MrBayes in non-interactive mode. MrBayes recognizes code blocks within nexus files, so we can pass alll of the same commands we used last week in interactive mode by pasting the code block below to the very bottom of your nexus file.
 
 ```
@@ -210,9 +210,8 @@ The bulk of a submission script is pasted below. You can copy it and then create
 
 ```
 #!/bin/bash
-#SBATCH --partition=p_ccib_1   			# which partition to run the job, options are in the Amarel guide
-#SBATCH --exclude=gpuc001,gpuc002,halc068,memc001,hal0287,hal0288	# exclude CCIB GPUs and large mem nodes
-# --constraint=oarc			# excludes owned nodes on main
+#SBATCH --partition=cmain   			# which partition to run the job, options are in the Amarel guide
+#SBATCH --constraint=oarc			# excludes owned nodes on cmain
 #SBATCH --job-name=mrB	 			# job name for listing in queue
 #SBATCH --output=slurm-%j-%x.out
 #SBATCH --mem=10G				# memory to allocate in Mb
@@ -243,9 +242,49 @@ sbatch run_mrbayes.nex
 
 To check on the status of your job, you can run ```squeue -u YOURNETID```.
 
-## Diagnose convergence by examining MCMC trace files in Tracer
+## Diagnosing convergence by examining MCMC trace files in Tracer
 
 The output of any MrBayes run should create the following files:
+```
+primates.nex.mcmc
+primates.nex.run1.p
+primates.nex.run1.t
+primates.nex.run2.p
+primates.nex.run2.t
+```
+
+These files contain the results of all logged generations of your MCMC run. To assess convergence, we need to examine the .p files. So using ssh or OnDemand, download these files to your local machine. Once everyone has reached this point we will proceed interactively.
+
+## Creating a post-burnin consensus tree
+
+Now that you have diagnosed convergence we have to do second, short run on MrBayes to summarize all of your post-burnin trees so taht we can create a single tree that represents the entire posterior distribution of trees.
+
+First we need to edit the MrBayes block at the bottom of your alignement file. We'll comment out the line that starts with MCMC and add a line to issue the summarize trees command. MrBayes recognizes text in square brackets ```[like this]``` as comments and doesn't parse them, so put brackets around the mcmc line (put the semicolon inside the brackets too).
+
+Next we will add a new line with the command ```sumt Burninfrac=0.XX```. We'll determine the fraction to discard in the previous section. If we decidede to discard the first 25% of the run, then set Burninfrac=0.25.
+
+Your new MrBayes block should look something like this:
+
+```
+... alignment ...
+end;
+
+BEGIN mrbayes;
+set seed=12345 swapseed=12345;
+lset  nst=6 rates=invgamma;
+[mcmc ngen=100000;]
+sumt Burninfrac=0.25;
+END;
+
+```
+
+Save your alignment file and we can execute it again. This will only take a minute or two to run so can do this via a batch job or as an interactive session (but not on the head node!).
+
+When completed you should have a set of additional output files that have summarized your posterior distribution. The one we are after for now will be a tree file named ```primates.nex.con.tre```. Use SSH or OnDemand to transfer that file to your laptop.
+
+## Generating a phylogenetic tree figure
+
+We'll do this part entirely interactively, so once you all have your tree files transferred onto your laptops, we'll proceed together.
 
 
 
