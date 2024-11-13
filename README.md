@@ -187,13 +187,10 @@ Our second meeting of the inferring phylogenies workshop will be entirely hands-
 
 Our learning goals for the second meeting are:
 
-*Submit MrBayes jobs using sbatch
-
-*Diagnose convergence by examining MCMC trace files in Tracer
-
-*Create a consensus tree from the post-burnin posterior distribution trees
-
-*Generate phylogenetic tree figures using FigTree
+* Submit MrBayes jobs using sbatch
+* Diagnose convergence by examining MCMC trace files in Tracer
+* Create a consensus tree from the post-burnin posterior distribution trees
+* Generate phylogenetic tree figures using FigTree
 
 ## Submit MrBayes jobs using sbatch
 Phylogenetic analayses can take a while to run so most of the time we want to submit them as batch jobs. To accomplish this we first need to set up our alignment file to run MrBayes in non-interactive mode. MrBayes recognizes code blocks within nexus files, so we can pass alll of the same commands we used last week in interactive mode by pasting the code block below to the very bottom of your nexus file.
