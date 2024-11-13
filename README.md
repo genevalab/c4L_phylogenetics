@@ -234,7 +234,7 @@ echo "## run mrB through conda environment"
 mb YOURALIGNMENT.nex
 
 ```
-Once your submission script is saved all it take to submit a MrBayes jobs is to run:
+Once your submission script is saved, all it take to submit a MrBayes jobs is to type:
 
 ```
 sbatch run_mrbayes.nex
@@ -259,9 +259,9 @@ These files contain the results of all logged generations of your MCMC run. To a
 
 Now that you have diagnosed convergence we have to do second, very short, run on MrBayes to summarize all of your post-burnin trees so that we can create a single tree that represents the entire posterior distribution of trees.
 
-First we need to edit the MrBayes block at the bottom of your alignement file. We'll comment out the line that starts with MCMC and add a line to issue the summarize trees command. MrBayes recognizes text in square brackets ```[like this]``` as comments and doesn't parse them, so put brackets around the mcmc line (put the semicolon inside the brackets too).
+First, we need to edit the MrBayes block at the bottom of your alignement file. We'll comment out the line that issued the MCMC command and add a line to issue the summarize trees command. MrBayes recognizes text in square brackets ```[like this]``` as comments and doesn't parse them, so put square brackets around the mcmc line (put the semicolon inside the brackets too).
 
-Next we will add a new line with the command ```sumt Burninfrac=0.XX```. We'll determine the fraction to discard in the previous section. If we decidede to discard the first 25% of the run, then set Burninfrac=0.25.
+Next, we will add a new line with the command ```sumt Burninfrac=0.XX```. We'll determine the fraction to discard in the previous section. If we decided to discard the first 25% of the run, then set Burninfrac=0.25.
 
 Your new MrBayes block should look something like this:
 
@@ -278,9 +278,9 @@ END;
 
 ```
 
-Save your alignment file and we can execute it again. This will only take a minute or two to run so can do this via a batch job or as an interactive session (but not on the head node!).
+Save your alignment file and we can execute it again. This will only take a minute or two to run so you can do this via a batch job or as an interactive session (but not on the head node!).
 
-When completed you should have a set of additional output files that have summarized your posterior distribution. The one we are after for now will be a tree file named ```primates.nex.con.tre```. Use SSH or OnDemand to transfer that file to your laptop.
+When completed, you should have a set of additional output files that have summarized your posterior distribution. The one we are after for now will be a tree file named ```primates.nex.con.tre```. Use SSH or OnDemand again to transfer that file to your laptop.
 
 ## Generating a phylogenetic tree figure
 
