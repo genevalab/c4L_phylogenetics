@@ -237,7 +237,7 @@ mb YOURALIGNMENT.nex
 Once your submission script is saved, all it take to submit a MrBayes jobs is to type:
 
 ```
-sbatch run_mrbayes.nex
+sbatch run_mrbayes.sh
 ```
 
 To check on the status of your job, you can run ```squeue -u YOURNETID```.
