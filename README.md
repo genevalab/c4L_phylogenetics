@@ -253,7 +253,7 @@ primates.nex.run2.p
 primates.nex.run2.t
 ```
 
-These files contain the results of all logged generations of your MCMC run. To assess convergence, we need to examine the .p files. So using SSH or [OnDemand](ondemand.hpc.rutgers.edu), download these files to your local machine. Once everyone has reached this point we will proceed interactively.
+These files contain the results of all logged generations of your MCMC run. To assess convergence, we need to examine the .p files. So using SSH or [OnDemand](ondemand.hpc.rutgers.edu), download ```primates.nex.run1.p``` and ```primates.nex.run2.p``` to your local machine. Once everyone has reached this point we will proceed interactively.
 
 ## Creating a post-burnin consensus tree
 
